@@ -1,0 +1,28 @@
+﻿<template>
+    <div class="container-base holder container-center">
+        <form id="submitForm" @submit.prevent="submit">
+
+            <label for="articleTitle" class="labelTitle rainbow">Titel: </label>
+            <input type="text" id="articleTitle" v-model="article.title" name="title" class="c_article c_articleTitle">
+
+            <label for="tagContainer" class="labelTitle rainbow">Tags (min. 3): </label>
+            <div class="container-base">
+                <input type="text" style="color: black;" id="addTagField" v-model="tagInput">
+                <button class="btn btn-tag" id="addTagBtn" @click.prevent="addTag">+</button>
+            </div>
+            <div id="tagContainer" class="container-base">
+                <p class="tag" v-for="tag in tagContainer" v-on:click="removeTag(tag)">{{tag}}</p>
+            </div>
+
+            <label for="articleContent" class="labelTitle rainbow">Inhalt: </label>
+            <textarea id="articleContent" v-model="article.content" name="content" rows="50" required="required" class="c_article c_articleContent"></textarea>
+
+            <label for="articleSource" class="labelTitle rainbow">Referenzen / Quellen:</label>
+            <textarea id="articleSource" v-model="article.references" name="source" rows="10" required="required" class="c_article c_articleContent "></textarea>
+
+            <input type="submit" value="Abschicken">
+        </form>
+    </div>
+</template>
+
+<script src="./createArticle.ts"></script>

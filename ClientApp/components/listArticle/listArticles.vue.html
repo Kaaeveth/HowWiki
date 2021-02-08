@@ -1,0 +1,25 @@
+﻿<template>
+    <div class="holder" v-if="articles.length">
+        <select name="sort" id="formateMenu" class="orderSelecter">
+        </select>
+
+        <div class="articleHolder" v-for="article in articles">
+            <router-link :to="`/article/show/${article.id}`">
+                {{article.title}}
+            </router-link>
+            <div>
+                Autor:
+                <p class="listArticles-username inline">{{article.author}}</p>
+            </div>
+            <p>Durchschn. Bewertung {{article.avgStars}} Sterne mit {{article.usersRatedCount}} Bewertungen</p>
+            <div id="tagContainer" class="container-base">
+                <p class="tag tag-small" v-for="tag in article.tags">
+                    {{tag}}
+                </p>
+            </div>
+        </div>
+    </div>
+    <p v-else>Loading...</p>
+</template>
+
+<script src="./listArticles.ts"></script>

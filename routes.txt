@@ -1,0 +1,3 @@
+/api/article/list
+/api/article/create
+/api/article/show/{id}

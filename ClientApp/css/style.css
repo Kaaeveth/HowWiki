@@ -1,0 +1,385 @@
+:root{
+	--button-color: #2861d2;
+	--login-bg: #142035;
+	--tag-color: #3c48e0;
+	--bg-color: #384143;
+	--card-color: #181830;
+}
+
+a {
+	color: #e2c0e2;
+}
+
+body {
+	background-color: var(--bg-color);
+	margin: 0;
+	color: white;
+	font-family: 'Roboto Condensed', sans-serif;
+	/*background-image: url('../img/wikihow_logo_230.png'), url("../img/pika.gif");*/
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right bottom, left bottom;
+    background-size: 30%, 5%;
+}
+
+.header-p {
+	font-style: italic;
+    font-size: x-large;
+}
+
+.container-base{
+	display: flex;
+}
+
+.container-wrap{
+	flex-wrap: wrap;
+}
+
+.headbar-container{
+	flex-direction: row;
+	//outline: var(--login-bg) solid .1em !important;
+	box-shadow: 0 1px black;
+	margin-bottom: 1em;
+	position: sticky;
+	background-color: #1e2729;
+	top: 0;
+	z-index: 99;
+}
+
+.headbar-container::after{
+	box-sizing: border-box;
+}
+
+.container-flex-style{
+	padding: 1em;
+	justify-content: space-between;
+	width: 80%;
+	margin: auto auto 2em;
+}
+
+.container-row{
+	flex-direction: row;
+}
+
+.container-50 {
+	width: 50% !important;
+}
+
+#season{
+	width: 100%;
+}
+
+.container-center{
+	padding: auto;
+}
+
+.nice-pics {
+	position: absolute;
+	z-index: -9999;
+}
+
+.btn, input[type=submit]{
+	font-size: 1em;
+	background-color: var(--button-color);
+	border-radius: 0.1em;
+	padding: 0.3em 0.4em;
+	border: none;
+	cursor: pointer;
+	color: white;
+	text-transform: capitalize !important;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.btn-headbar{
+	margin: .4em;
+	font-size: medium;
+}
+
+.btn-logout{
+	background-color: #c1400d;
+}
+
+.btn-a {
+	text-decoration: none;
+	text-align: center;
+	display: inline-block;
+}
+
+.btn-tag{
+	margin-left: .2em;
+}
+
+input[type="text"], input[type="password"], input[type="email"]{
+	width: 60%;
+	display: inline-block;
+	margin: 1em 0;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 0.1em;
+}
+
+.holder {
+	background-color: var(--login-bg);
+	border-radius: 2px;
+	width: 60%;
+	padding: 1em;
+	color: white;
+	margin: 1em auto;
+}
+
+.holder-90{
+	width: 90% !important;
+}
+
+.holder-small{
+	width: 15%;
+}
+
+.tag{
+	border-radius: .2em;
+	padding: .3em;
+	background-color: var(--tag-color);
+	margin-right: 1em;
+	cursor: pointer;
+	font-size: larger;
+	color: #e3e2e3;
+}
+
+.tag-small {
+	font-size: small;
+	margin: .1em;
+}
+
+.container-tag{
+	background-color: #4a7cbc;
+	padding: .3em !important;
+}
+
+.label-small {
+	font-size: small;
+	text-transform: none;
+}
+
+.container-tag:not(:last-child) {
+	margin-right: .3em;
+}
+
+.register-input {
+	width: 50%;
+	margin: auto;
+}
+
+.articleBox{
+	background-color: var(--card-color);
+	border-radius: .2em;
+	padding: 1em;
+	margin: 1em 0 1em 0;
+}
+
+.recTitle{
+	font-size: larger;
+	margin-top: .1em;
+}
+
+.articleRef{
+	font-size: small;
+	color: gold;
+}
+
+.articleHolder{
+	border-style: solid;
+	border-color: #223645;
+	border-radius: .3em;
+	margin-bottom: .5em;
+	box-shadow: 1px 1px black;
+	padding: .5em;
+}
+
+.articleHolder a{
+	font-size: x-large;
+	text-decoration: none;
+}
+
+.listArticles-username{
+	font-size: large;
+	color: white;
+	text-decoration: underline;
+}
+
+.inline{
+	display: inline-block;
+}
+
+a:hover {
+	color: blue;
+}
+
+.orderSelecter {
+	margin-bottom: .4em;
+	background-color: var(--button-color);
+	border: none;
+	font-size: large;
+}
+
+.error-head {
+	color: red;
+	font-size: xx-large;
+}
+
+
+.screen-reader{
+  width: var(--screenReaderWidth, 1px) !important;
+  height: var(--screenReaderHeight, 1px) !important;
+  padding: var(--screenReaderPadding, 0) !important;
+  border: var(--screenReaderBorder, none) !important;
+
+  position: var(--screenReaderPosition, absolute) !important;
+  clip: var(--screenReaderClip, rect(1px, 1px, 1px, 1px)) !important;
+  overflow: var(--screenReaderOverflow, hidden) !important;
+}
+
+/*
+=====
+CORE STYLES
+=====
+*/
+
+.rating{
+  --uiRatingColor: var(--ratingColor, #eee);
+  --uiRatingColorActive: var(--ratingColorActive, #ffcc00);
+
+  display: var(--ratingDisplay, flex);
+  font-size: var(--ratingSize, 1rem);
+  color: var(--uiRatingColor);
+}
+    
+.rating__control:nth-of-type(1):focus ~ .rating__item:nth-of-type(1)::before,
+.rating__control:nth-of-type(2):focus ~ .rating__item:nth-of-type(2)::before,
+.rating__control:nth-of-type(3):focus ~ .rating__item:nth-of-type(3)::before,
+.rating__control:nth-of-type(4):focus ~ .rating__item:nth-of-type(4)::before,
+.rating__control:nth-of-type(5):focus ~ .rating__item:nth-of-type(5)::before{
+  content: ""; 
+  box-shadow: 0 0 0 var(--ratingOutlineWidth, 4px) var(--uiRatingColorActive);
+
+  position: absolute;
+  top: -.15em;
+  right: 0;
+  bottom: -.15em;
+  left: 0;
+  z-index: -1;
+}
+
+.rating__item{
+  cursor: pointer;  
+  position: relative;
+}
+
+.rating__item{
+  padding-left: .25em;
+  padding-right: .25em;
+}
+
+.rating__star{
+  display: block;
+  width: 1em;
+  height: 1em;
+
+  fill: currentColor;
+  stroke: var(--ratingStroke, #222);
+  stroke-width: var(--ratingStrokeWidth, 1px);
+}
+
+.rating:hover,
+.rating__control:nth-of-type(1):checked ~ .rating__item:nth-of-type(1),
+.rating__control:nth-of-type(2):checked ~ .rating__item:nth-of-type(-n+2),
+.rating__control:nth-of-type(3):checked ~ .rating__item:nth-of-type(-n+3),
+.rating__control:nth-of-type(4):checked ~ .rating__item:nth-of-type(-n+4),
+.rating__control:nth-of-type(5):checked ~ .rating__item:nth-of-type(-n+5){
+  color: var(--uiRatingColorActive);
+}
+
+.rating__item:hover ~ .rating__item{
+  color: var(--uiRatingColor);
+}
+
+/*
+=====
+SETTINGS
+=====
+*/
+
+.rating{
+  --ratingSize: 2rem;
+  --ratingColor: #eee;
+  --ratingColorActive: #ffcc00;
+}
+
+/*
+=====
+DEMO
+=====
+*/
+
+.page{
+  display: flex;
+}
+
+.page__demo{
+  margin: auto;  
+}
+
+.page__group{
+  text-align: center;
+}
+
+.page__hint{
+  display: block;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+@media (min-width: 641px){
+  .page__demo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.login-holder {
+	width: 50%;
+}
+
+.login-form {
+	width: 100%;
+	text-align: center;
+}
+
+.login-text {
+	text-transform: uppercase;
+	font-size: 18px;
+}
+
+.login-title {
+	padding: .1em 1em;
+}
+
+.c_articleContent {
+	resize: none;
+	border-radius: .3em;
+	color: black;
+}
+
+.c_article {
+	width: 100% !important;
+}
+
+.c_articleTitle {
+	font-size: x-large;
+	color: black;
+}
+
+.labelTitle {
+	font-size: xx-large;
+}
