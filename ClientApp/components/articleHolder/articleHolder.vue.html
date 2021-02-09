@@ -1,0 +1,17 @@
+﻿<template>
+    <div class="articleHolder">
+        <router-link :to="`/article/show/${article.id}`">
+            {{article.title}}
+        </router-link>
+        <div>
+            Autor:
+            <p class="listArticles-username inline">{{article.author}}</p>
+        </div>
+        <p>Durchschn. Bewertung {{article.avgStars}} Sterne mit {{article.usersRatedCount}} Bewertungen</p>
+        <div id="tagContainer" class="container-base">
+            <tag-component v-bind:tag="tag" v-bind:small="true" v-for="tag in article.tags"></tag-component>
+        </div>
+    </div>
+</template>
+
+<script src="./articleHolder.ts"></script>

@@ -2,7 +2,11 @@
 import { Article } from '../../Article';
 import { Component } from 'vue-property-decorator';
 
-@Component
+@Component({
+    components: {
+        ArticleHolder: require('../articleHolder/articleHolder.vue.html')
+    }
+})
 export default class ListArticlesComponent extends Vue {
     articles: Article[] = [];
 
