@@ -24,7 +24,7 @@
             <div class="holder holder-90">
                 <form accept-charset="utf-8">
                     <!-- StarRating -->
-                    <star-rating></star-rating>
+                    <star-rating v-on:ratingchanged="setRating"></star-rating>
                     <label for="helpCheck">Ist der Artikel hilfreich?</label> 
                     <input id="helpCheck" type="checkbox" name="helpful" v-model="isHelpful">
                     <input type="submit" @submit.prevent="submitRating" value="Bewerten">
@@ -39,10 +39,10 @@
                 <list-comments v-bind:textid="article.id" v-bind:comments="comments"></list-comments>
             </div>
         </div>
-        <div class="holder holder-small container-responsive">
-            <h3 class="recTitle">Empfehlungen des Hauses</h3>
+        <!--<div class="holder holder-small container-responsive">
+            <h3 class="recTitle">Empfehlungen des Hauses</h3>-->
             <!--<article-holder v-for="recArticle in recommendedArticles" v-bind:article="recArticle"></article-holder>-->
-        </div>
+        <!--</div>-->
     </div>
 </template>
 

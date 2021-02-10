@@ -17,7 +17,6 @@ const ComponentOptions = Vue.extend({
 export default class ShowArticleComponent extends ComponentOptions {
     isHelpful: boolean = false;
     rating: number = 0;
-    recommendedArticles: Article[] = []; //Empfehlungen
     article: Article = {};
     comments: Comment[] = [];
 
@@ -38,15 +37,15 @@ export default class ShowArticleComponent extends ComponentOptions {
         fetch('/api/comment/' + this.$route.params.textId)
             .then(res => res.json() as Promise<Comment[]>)
             .then(data => this.comments = data);
-
-        ////Empfehlungen fetchen
-        //fetch('/api/article/recommended?textId=' + textId)
-        //    .then(res => res.json() as Promise<Article[]>)
-        //    .then(data => this.recommendedArticles = data);
     }
 
     submitRating() {
 
+    }
+
+    setRating(val: number) {
+        this.rating = val;
+        console.log(val);
     }
 
     addComment(content: string) {
