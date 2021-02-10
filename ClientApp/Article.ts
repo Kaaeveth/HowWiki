@@ -1,4 +1,4 @@
-﻿export class Article {
+﻿export default class Article {
     author?: string;
     content?: string;
     title?: string;

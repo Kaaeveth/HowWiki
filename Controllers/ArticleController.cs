@@ -41,10 +41,10 @@ namespace HowWiki.Controllers
         }
 
         // api/<ArticleController>/show?textID=
-        [HttpGet("show")]
-        public string Get(int textID)
+        [HttpGet("show/{textId}")]
+        public ArticleModel Get(int textID)
         {
-            return "test";
+            return articleRepository.GetArticleById(textID);
         }
 
     }

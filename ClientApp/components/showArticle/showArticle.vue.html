@@ -1,3 +1,49 @@
 ﻿<template>
+    <div class="container-base container-flex-style container-row container-responsive">
+        <div class="holder-90">
+            <div class="holder holder-90">
+                <h1>{{article.title}}</h1>
+                <div class="articleBox">{{article.content}}</div>
+                <p>Referenzen:</p>
+                <div class="articleBox articleRef">
+                    {{article.references}}
+                </div>
+            </div>
 
+            <div class="container-base container-row holder holder-90">
+                <div>
+                    Author: <p class="listArticles-username inline"> {{article.author}}</p>
+                    <div id="tagContainer" class="container-base container-wrap">
+                        <tag v-for="tag in article.tags" v-bind:tag="tag"></tag>
+                    </div>
+                </div>
+                <div style="margin-left: auto">
+                    <p>Durchschnittliche Bewertung: {{article.avgStars}} Sterne mit {{article.usersRatedCount}} Bewertungen</p>
+                </div>
+            </div>
+            <div class="holder holder-90">
+                <form accept-charset="utf-8">
+                    <!-- StarRating -->
+                    <star-rating></star-rating>
+                    <label for="helpCheck">Ist der Artikel hilfreich?</label> 
+                    <input id="helpCheck" type="checkbox" name="helpful" v-model="isHelpful">
+                    <input type="submit" @submit.prevent="submitRating" value="Bewerten">
+                </form>
+            </div>
+            <div class="holder holder-90">
+                <!-- createComment -->
+                <create-comment v-bind:textid="article.id" v-on:commentsubmit="addComment"></create-comment>
+            </div>
+            <div class="holder holder-90">
+                <!-- listComments -->
+                <list-comments v-bind:textid="article.id" v-bind:comments="comments"></list-comments>
+            </div>
+        </div>
+        <div class="holder holder-small container-responsive">
+            <h3 class="recTitle">Empfehlungen des Hauses</h3>
+            <!--<article-holder v-for="recArticle in recommendedArticles" v-bind:article="recArticle"></article-holder>-->
+        </div>
+    </div>
 </template>
+
+<script src="./showArticle.ts"></script>

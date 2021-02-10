@@ -1,5 +1,5 @@
 ﻿import Vue from 'vue';
-import { Article } from '../../Article';
+import Article from '../../Article';
 import { Component } from 'vue-property-decorator';
 
 @Component

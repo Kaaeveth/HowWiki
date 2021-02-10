@@ -1,10 +1,12 @@
 ﻿import Vue from 'vue';
 import Component from 'vue-class-component';
-import { Article } from '../../Article';
+import Article from '../../Article';
 
 const ArticleProps = Vue.extend({
     props: {
-        article: Article
+        article: {
+            type: Article
+        }
     }
 })
 

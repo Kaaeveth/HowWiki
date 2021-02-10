@@ -1,6 +1,6 @@
 ﻿import Vue from 'vue';
-import { Article } from '../../Article';
-import { Component } from 'vue-property-decorator';
+import Article  from '../../Article';
+import Component from 'vue-class-component';
 
 @Component({
     components: {

@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\dist\style.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="ClientApp\Article.ts" />
     <None Remove="ClientApp\components\articleHolder\articleHolder.ts" />
     <None Remove="ClientApp\components\listArticle\listArticles.ts" />
@@ -22,6 +26,10 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\dist\style.css" />
   </ItemGroup>
 
   <ItemGroup>

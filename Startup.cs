@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using HowWiki.Repository;
+using HowWiki.DB;
 
 namespace HowWiki
 {
@@ -20,7 +21,11 @@ namespace HowWiki
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddScoped<IArticleRepository, ArticleRepository>();
+
+            //Oracle spezifisch
+            services.AddScoped<IArticleRepository, OracleArticleRepository>();
+            services.AddScoped<ICommentRepository, OracleCommentRepository>();
+            services.AddSingleton<IDbConnectionPool, OracleDbConnectionPool>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

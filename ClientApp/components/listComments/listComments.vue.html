@@ -1,0 +1,15 @@
+﻿<template>
+    <div>
+        <h3>Kommentare</h3>
+        <p v-if="!comments.length">Noch keine Kommentare. Sei der Erste!</p>
+        <div v-else id="comments">
+            <div class="articleBox" v-for="comment in comments">
+                <p>{{comment.author}} am {{comment.created}}</p>
+                <br>
+                <p>{{comment.comment}}</p>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script src="./listComments.ts"></script>

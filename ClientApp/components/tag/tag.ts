@@ -4,7 +4,10 @@ import Component from 'vue-class-component';
 const TagProps = Vue.extend({
     props: {
         tag: String,
-        small: Boolean
+        small: {
+            type: Boolean,
+            default: true
+        }
     }
 })
 

@@ -1,0 +1,11 @@
+﻿<template>
+    <div>
+        <label for="comment">Einen Kommentar abgeben</label>
+        <br>
+        <textarea id="comment" v-model="comment" placeholder="Kommentar..." maxlength="120" minlength="1" style="box-sizing: border-box; width: 100%;"></textarea>
+        <br>
+        <button id="btnComment" class="btn" @click="submitComment">Kommentieren</button>
+    </div>
+</template>
+
+<script src="./createComment.ts"></script>
