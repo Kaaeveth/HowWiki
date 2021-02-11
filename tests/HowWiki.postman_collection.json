@@ -1,0 +1,718 @@
+{
+	"info": {
+		"_postman_id": "6395d4aa-46eb-4ebd-a4a3-ba0ff2439ccb",
+		"name": "HowWiki",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "listArticles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('listOk', () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('listJson', () => {\r",
+							"    pm.response.to.be.json;\r",
+							"    pm.response.to.have.jsonSchema({\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"array\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": [],\r",
+							"    \"examples\": [\r",
+							"        [\r",
+							"            {\r",
+							"                \"author\": \"Johannes\",\r",
+							"                \"content\": \"Hallo\",\r",
+							"                \"title\": \"Test vom Frontend\",\r",
+							"                \"references\": \"Ich\",\r",
+							"                \"avgStars\": 3.0,\r",
+							"                \"usersRatedCount\": 1,\r",
+							"                \"id\": 118,\r",
+							"                \"tags\": [\r",
+							"                    \"Test\",\r",
+							"                    \"lel\"\r",
+							"                ]\r",
+							"            },\r",
+							"            {\r",
+							"                \"author\": \"Johannes\",\r",
+							"                \"content\": \"Hallo\",\r",
+							"                \"title\": \"fsdfdsf\",\r",
+							"                \"references\": \"Ich\",\r",
+							"                \"avgStars\": 3.0,\r",
+							"                \"usersRatedCount\": 1,\r",
+							"                \"id\": 117,\r",
+							"                \"tags\": []\r",
+							"            }\r",
+							"        ]\r",
+							"    ],\r",
+							"    \"additionalItems\": true,\r",
+							"    \"items\": {\r",
+							"        \"$id\": \"#/items\",\r",
+							"        \"anyOf\": [\r",
+							"            {\r",
+							"                \"$id\": \"#/items/anyOf/0\",\r",
+							"                \"type\": \"object\",\r",
+							"                \"title\": \"The first anyOf schema\",\r",
+							"                \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                \"default\": {},\r",
+							"                \"examples\": [\r",
+							"                    {\r",
+							"                        \"author\": \"Johannes\",\r",
+							"                        \"content\": \"Hallo\",\r",
+							"                        \"title\": \"Test vom Frontend\",\r",
+							"                        \"references\": \"Ich\",\r",
+							"                        \"avgStars\": 3.0,\r",
+							"                        \"usersRatedCount\": 1,\r",
+							"                        \"id\": 118,\r",
+							"                        \"tags\": [\r",
+							"                            \"Test\",\r",
+							"                            \"lel\"\r",
+							"                        ]\r",
+							"                    }\r",
+							"                ],\r",
+							"                \"required\": [\r",
+							"                    \"author\",\r",
+							"                    \"content\",\r",
+							"                    \"title\",\r",
+							"                    \"references\",\r",
+							"                    \"avgStars\",\r",
+							"                    \"usersRatedCount\",\r",
+							"                    \"id\",\r",
+							"                    \"tags\"\r",
+							"                ],\r",
+							"                \"properties\": {\r",
+							"                    \"author\": {\r",
+							"                        \"$id\": \"#/items/anyOf/0/properties/author\",\r",
+							"                        \"type\": \"string\",\r",
+							"                        \"title\": \"The author schema\",\r",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                        \"default\": \"\",\r",
+							"                        \"examples\": [\r",
+							"                            \"Johannes\"\r",
+							"                        ]\r",
+							"                    },\r",
+							"                    \"content\": {\r",
+							"                        \"$id\": \"#/items/anyOf/0/properties/content\",\r",
+							"                        \"type\": \"string\",\r",
+							"                        \"title\": \"The content schema\",\r",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                        \"default\": \"\",\r",
+							"                        \"examples\": [\r",
+							"                            \"Hallo\"\r",
+							"                        ]\r",
+							"                    },\r",
+							"                    \"title\": {\r",
+							"                        \"$id\": \"#/items/anyOf/0/properties/title\",\r",
+							"                        \"type\": \"string\",\r",
+							"                        \"title\": \"The title schema\",\r",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                        \"default\": \"\",\r",
+							"                        \"examples\": [\r",
+							"                            \"Test vom Frontend\"\r",
+							"                        ]\r",
+							"                    },\r",
+							"                    \"references\": {\r",
+							"                        \"$id\": \"#/items/anyOf/0/properties/references\",\r",
+							"                        \"type\": \"string\",\r",
+							"                        \"title\": \"The references schema\",\r",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                        \"default\": \"\",\r",
+							"                        \"examples\": [\r",
+							"                            \"Ich\"\r",
+							"                        ]\r",
+							"                    },\r",
+							"                    \"avgStars\": {\r",
+							"                        \"$id\": \"#/items/anyOf/0/properties/avgStars\",\r",
+							"                        \"type\": \"number\",\r",
+							"                        \"title\": \"The avgStars schema\",\r",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                        \"default\": 0.0,\r",
+							"                        \"examples\": [\r",
+							"                            3.0\r",
+							"                        ]\r",
+							"                    },\r",
+							"                    \"usersRatedCount\": {\r",
+							"                        \"$id\": \"#/items/anyOf/0/properties/usersRatedCount\",\r",
+							"                        \"type\": \"integer\",\r",
+							"                        \"title\": \"The usersRatedCount schema\",\r",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                        \"default\": 0,\r",
+							"                        \"examples\": [\r",
+							"                            1\r",
+							"                        ]\r",
+							"                    },\r",
+							"                    \"id\": {\r",
+							"                        \"$id\": \"#/items/anyOf/0/properties/id\",\r",
+							"                        \"type\": \"integer\",\r",
+							"                        \"title\": \"The id schema\",\r",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                        \"default\": 0,\r",
+							"                        \"examples\": [\r",
+							"                            118\r",
+							"                        ]\r",
+							"                    },\r",
+							"                    \"tags\": {\r",
+							"                        \"$id\": \"#/items/anyOf/0/properties/tags\",\r",
+							"                        \"type\": \"array\",\r",
+							"                        \"title\": \"The tags schema\",\r",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                        \"default\": [],\r",
+							"                        \"examples\": [\r",
+							"                            [\r",
+							"                                \"Test\",\r",
+							"                                \"lel\"\r",
+							"                            ]\r",
+							"                        ],\r",
+							"                        \"additionalItems\": true,\r",
+							"                        \"items\": {\r",
+							"                            \"$id\": \"#/items/anyOf/0/properties/tags/items\",\r",
+							"                            \"anyOf\": [\r",
+							"                                {\r",
+							"                                    \"$id\": \"#/items/anyOf/0/properties/tags/items/anyOf/0\",\r",
+							"                                    \"type\": \"string\",\r",
+							"                                    \"title\": \"The first anyOf schema\",\r",
+							"                                    \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                                    \"default\": \"\",\r",
+							"                                    \"examples\": [\r",
+							"                                        \"Test\",\r",
+							"                                        \"lel\"\r",
+							"                                    ]\r",
+							"                                }\r",
+							"                            ]\r",
+							"                        }\r",
+							"                    }\r",
+							"                },\r",
+							"                \"additionalProperties\": true\r",
+							"            }\r",
+							"        ]\r",
+							"    }\r",
+							"})\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/article/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"article",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listComments",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('commentListOk', () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('commentListSchema', () => {\r",
+							"    pm.response.to.have.jsonSchema({\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"array\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": [],\r",
+							"    \"examples\": [\r",
+							"        [\r",
+							"            {\r",
+							"                \"author\": \"Clorox\",\r",
+							"                \"comment\": \"Hallo\",\r",
+							"                \"created\": \"2021-01-10T11:27:14\"\r",
+							"            },\r",
+							"            {\r",
+							"                \"author\": \"Clorox\",\r",
+							"                \"comment\": \"Ein weiterer Testkommentar.\",\r",
+							"                \"created\": \"2020-12-27T15:31:11\"\r",
+							"            }\r",
+							"        ]\r",
+							"    ],\r",
+							"    \"additionalItems\": true,\r",
+							"    \"items\": {\r",
+							"        \"$id\": \"#/items\",\r",
+							"        \"anyOf\": [\r",
+							"            {\r",
+							"                \"$id\": \"#/items/anyOf/0\",\r",
+							"                \"type\": \"object\",\r",
+							"                \"title\": \"The first anyOf schema\",\r",
+							"                \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                \"default\": {},\r",
+							"                \"examples\": [\r",
+							"                    {\r",
+							"                        \"author\": \"Clorox\",\r",
+							"                        \"comment\": \"Hallo\",\r",
+							"                        \"created\": \"2021-01-10T11:27:14\"\r",
+							"                    }\r",
+							"                ],\r",
+							"                \"required\": [\r",
+							"                    \"author\",\r",
+							"                    \"comment\",\r",
+							"                    \"created\"\r",
+							"                ],\r",
+							"                \"properties\": {\r",
+							"                    \"author\": {\r",
+							"                        \"$id\": \"#/items/anyOf/0/properties/author\",\r",
+							"                        \"type\": \"string\",\r",
+							"                        \"title\": \"The author schema\",\r",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                        \"default\": \"\",\r",
+							"                        \"examples\": [\r",
+							"                            \"Clorox\"\r",
+							"                        ]\r",
+							"                    },\r",
+							"                    \"comment\": {\r",
+							"                        \"$id\": \"#/items/anyOf/0/properties/comment\",\r",
+							"                        \"type\": \"string\",\r",
+							"                        \"title\": \"The comment schema\",\r",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                        \"default\": \"\",\r",
+							"                        \"examples\": [\r",
+							"                            \"Hallo\"\r",
+							"                        ]\r",
+							"                    },\r",
+							"                    \"created\": {\r",
+							"                        \"$id\": \"#/items/anyOf/0/properties/created\",\r",
+							"                        \"type\": \"string\",\r",
+							"                        \"title\": \"The created schema\",\r",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                        \"default\": \"\",\r",
+							"                        \"examples\": [\r",
+							"                            \"2021-01-10T11:27:14\"\r",
+							"                        ]\r",
+							"                    }\r",
+							"                },\r",
+							"                \"additionalProperties\": true\r",
+							"            }\r",
+							"        ]\r",
+							"    }\r",
+							"})\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/comment/24",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"comment",
+						"24"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listComments404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('commentListOk', () => {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/comment/-1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"comment",
+						"-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rateArticle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('showOk', () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/rating/rate/117/3/false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"rating",
+						"rate",
+						"117",
+						"3",
+						"false"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createArticle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('showOk', () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Test5",
+							"type": "text"
+						},
+						{
+							"key": "content",
+							"value": "testapi",
+							"type": "text"
+						},
+						{
+							"key": "references",
+							"value": "nice",
+							"type": "text"
+						},
+						{
+							"key": "tags",
+							"value": "hello,lel,tag",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/api/article/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"article",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showArticle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('showOk', () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('showJson', () => {\r",
+							"    pm.response.to.be.json;\r",
+							"    pm.response.to.have.jsonSchema({\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"author\": \"Johannes\",\r",
+							"            \"content\": \"Hallo\",\r",
+							"            \"title\": \"Test vom Frontend\",\r",
+							"            \"references\": \"Ich\",\r",
+							"            \"avgStars\": 3.0,\r",
+							"            \"usersRatedCount\": 1,\r",
+							"            \"id\": 118,\r",
+							"            \"tags\": [\r",
+							"                \"Test\",\r",
+							"                \"lel\"\r",
+							"            ]\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"author\",\r",
+							"        \"content\",\r",
+							"        \"title\",\r",
+							"        \"references\",\r",
+							"        \"avgStars\",\r",
+							"        \"usersRatedCount\",\r",
+							"        \"id\",\r",
+							"        \"tags\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"author\": {\r",
+							"            \"$id\": \"#/properties/author\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The author schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"Johannes\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"content\": {\r",
+							"            \"$id\": \"#/properties/content\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The content schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"Hallo\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"title\": {\r",
+							"            \"$id\": \"#/properties/title\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The title schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"Test vom Frontend\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"references\": {\r",
+							"            \"$id\": \"#/properties/references\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The references schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"Ich\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"avgStars\": {\r",
+							"            \"$id\": \"#/properties/avgStars\",\r",
+							"            \"type\": \"number\",\r",
+							"            \"title\": \"The avgStars schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": 0.0,\r",
+							"            \"examples\": [\r",
+							"                3.0\r",
+							"            ]\r",
+							"        },\r",
+							"        \"usersRatedCount\": {\r",
+							"            \"$id\": \"#/properties/usersRatedCount\",\r",
+							"            \"type\": \"integer\",\r",
+							"            \"title\": \"The usersRatedCount schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": 0,\r",
+							"            \"examples\": [\r",
+							"                1\r",
+							"            ]\r",
+							"        },\r",
+							"        \"id\": {\r",
+							"            \"$id\": \"#/properties/id\",\r",
+							"            \"type\": \"integer\",\r",
+							"            \"title\": \"The id schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": 0,\r",
+							"            \"examples\": [\r",
+							"                118\r",
+							"            ]\r",
+							"        },\r",
+							"        \"tags\": {\r",
+							"            \"$id\": \"#/properties/tags\",\r",
+							"            \"type\": \"array\",\r",
+							"            \"title\": \"The tags schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": [],\r",
+							"            \"examples\": [\r",
+							"                [\r",
+							"                    \"Test\",\r",
+							"                    \"lel\"\r",
+							"                ]\r",
+							"            ],\r",
+							"            \"additionalItems\": true,\r",
+							"            \"items\": {\r",
+							"                \"$id\": \"#/properties/tags/items\",\r",
+							"                \"anyOf\": [\r",
+							"                    {\r",
+							"                        \"$id\": \"#/properties/tags/items/anyOf/0\",\r",
+							"                        \"type\": \"string\",\r",
+							"                        \"title\": \"The first anyOf schema\",\r",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"                        \"default\": \"\",\r",
+							"                        \"examples\": [\r",
+							"                            \"Test\",\r",
+							"                            \"lel\"\r",
+							"                        ]\r",
+							"                    }\r",
+							"                ]\r",
+							"            }\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": true\r",
+							"});\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/article/show/{{textid}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"article",
+						"show",
+						"{{textid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showArticle404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('showNotFound', () => {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/article/show/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"article",
+						"show",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "port",
+			"value": "61033"
+		},
+		{
+			"key": "textid",
+			"value": "118"
+		}
+	]
+}
