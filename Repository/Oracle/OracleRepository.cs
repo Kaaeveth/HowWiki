@@ -1,33 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using HowWiki.DB;
-using HowWiki.Repository;
 using Oracle.ManagedDataAccess.Client;
 
-namespace HowWiki.Repository
+namespace HowWiki.Repository.Oracle
 {
-    public abstract class OracleRepository : IDisposable
+    public abstract class OracleRepository : Repository
     {
-        protected readonly OracleConnection dbConnection;
-        protected readonly IDbConnectionPool dbConnectionPool;
-
         public OracleRepository(IDbConnectionPool connectionPool)
+            :base(connectionPool)
         {
-            dbConnectionPool = connectionPool;
-            dbConnection = (OracleConnection)connectionPool.RequestConnection();
-        }
-
-        public void Dispose()
-        {
-            dbConnectionPool.ReleaseConnection(dbConnection);
+            if (connectionPool is OracleDbConnectionPool)
+                dbConnection = (OracleConnection)connectionPool.RequestConnection();
+            else
+                throw new InvalidCastException("OracleRepository nur mit OracleDbConnectionPool verwenden");
         }
 
         public OracleCommand GetOracleCommand(string query, Dictionary<string, (string, OracleDbType)> parameters)
         {
-            var cmd = new OracleCommand(query, dbConnection) //Neues Statement
+            var cmd = new OracleCommand(query, (OracleConnection)dbConnection) //Neues Statement
             {
                 CommandType = CommandType.Text
             };

@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Oracle.ManagedDataAccess.Client;
 using HowWiki.DB;
-using System.Data;
-using System.Data.Common;
 
-namespace HowWiki.Repository
+namespace HowWiki.Repository.Oracle
 {
     public class OracleArticleRepository : OracleRepository, IArticleRepository
     {
@@ -43,7 +41,37 @@ namespace HowWiki.Repository
 
         public void InsertArticle(ArticleModel article)
         {
-            throw new NotImplementedException();
+            int textId;
+            var query = GetOracleCommand(queries[QUERY_KEYS.INSERT], new Dictionary<string, (string, OracleDbType)>()
+            {
+                {":inhalt", (article.Content, OracleDbType.NVarchar2) },
+                {":refs", (article.References, OracleDbType.NVarchar2) },
+                {":userid", ("76", OracleDbType.Int32) },
+                {":titel", (article.Title, OracleDbType.NVarchar2) }
+            });
+            var textIdQuery = GetOracleCommand("select max(textId) from DS_Hilfetexte", null);
+            //textIdQuery.Connection = dbConnection;
+
+            query.ExecuteNonQuery();
+            textId = (int)(decimal)textIdQuery.ExecuteScalar();
+
+            //Tags
+            OracleParameter ids = new OracleParameter
+            {
+                OracleDbType = OracleDbType.Int32,
+                Value = Enumerable.Range(1, article.Tags.Length).Select(s => textId).ToArray()
+            };
+            OracleParameter tags = new OracleParameter
+            {
+                OracleDbType = OracleDbType.NVarchar2,
+                Value = article.Tags
+            };
+
+            var tagCmd = GetOracleCommand(queries[QUERY_KEYS.INSERT_TAGS], null);
+            tagCmd.Parameters.Add(ids);
+            tagCmd.Parameters.Add(tags);
+            tagCmd.ArrayBindCount = article.Tags.Length;
+            tagCmd.ExecuteNonQuery();
         }
 
         private ArticleModel ParseModel(OracleDataReader reader)
@@ -86,14 +114,18 @@ namespace HowWiki.Repository
         {
             SELECT_ALL,
             SELECT_ID,
-            SELECT_TAGS
+            SELECT_TAGS,
+            INSERT,
+            INSERT_TAGS
         }
 
         private readonly Dictionary<QUERY_KEYS, string> queries = new Dictionary<QUERY_KEYS, string>() 
         {
-            {QUERY_KEYS.SELECT_ALL, "select * from article" },
+            {QUERY_KEYS.SELECT_ALL, "select * from article order by erstellt desc" },
             {QUERY_KEYS.SELECT_ID, "select * from article where textID = :id" },
-            {QUERY_KEYS.SELECT_TAGS, "select tag from DS_Tags where id = :id" }
+            {QUERY_KEYS.SELECT_TAGS, "select tag from DS_Tags where id = :id" },
+            {QUERY_KEYS.INSERT, "insert into DS_Hilfetexte values (default, :inhalt, :refs, :userid, sysdate, :titel)"},
+            {QUERY_KEYS.INSERT_TAGS, "insert into DS_Tags values (:tid, :tag)" }
         };
     }
 }

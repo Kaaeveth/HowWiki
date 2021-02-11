@@ -7,7 +7,7 @@ using HowWiki.DB;
 using System.Data;
 using Oracle.ManagedDataAccess.Client;
 
-namespace HowWiki.Repository
+namespace HowWiki.Repository.Oracle
 {
     public class OracleCommentRepository : OracleRepository, ICommentRepository
     {

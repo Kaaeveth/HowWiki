@@ -23,28 +23,27 @@ namespace HowWiki.Controllers
         [HttpGet("list")]
         public IEnumerable<ArticleModel> Get()
         {
-            //Testdaten
-            //return new ArticleModel[]{
-            //    new ArticleModel
-            //    {
-            //        Author = "Test",
-            //        Content = "Test",
-            //        AvgStars = 3f,
-            //        Id = 42,
-            //        References = "lel",
-            //        Title = "Hello",
-            //        UsersRatedCount = 3,
-            //        Tags = new string[] {"eins", "zwei", "Polizei"}
-            //    }
-            //};
             return articleRepository.GetArticles();
         }
 
-        // api/<ArticleController>/show?textID=
+        // GET api/<ArticleController>/show/{textId}
         [HttpGet("show/{textId}")]
         public ArticleModel Get(int textID)
         {
             return articleRepository.GetArticleById(textID);
+        }
+
+        // POST api/<ArticleController>/create
+        [HttpPost("create")]
+        public void Post()
+        {
+            articleRepository.InsertArticle(new ArticleModel()
+            {
+                Title = Request.Form["title"],
+                Content = Request.Form["content"],
+                References = Request.Form["references"],
+                Tags = Request.Form["tags"].ToString().Split(',')
+            });
         }
 
     }
