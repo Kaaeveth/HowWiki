@@ -22,7 +22,13 @@ namespace HowWiki.Controllers
         [HttpGet("{id}")]
         public IEnumerable<CommentModel> Get(int id)
         {
-            return commentRepository.GetCommentsByTextId(id);
+            var res =  commentRepository.GetCommentsByTextId(id);
+            if(res == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return res;
         }
 
         // POST api/<CommentController>/:id/:comment

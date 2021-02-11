@@ -30,7 +30,13 @@ namespace HowWiki.Controllers
         [HttpGet("show/{textId}")]
         public ArticleModel Get(int textID)
         {
-            return articleRepository.GetArticleById(textID);
+            ArticleModel article = articleRepository.GetArticleById(textID);
+            if (article == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return article;
         }
 
         // POST api/<ArticleController>/create

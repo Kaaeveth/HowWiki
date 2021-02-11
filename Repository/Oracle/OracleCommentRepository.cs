@@ -27,6 +27,8 @@ namespace HowWiki.Repository.Oracle
             }))
             using(OracleDataReader reader = cmd.ExecuteReader())
             {
+                if (!reader.HasRows)
+                    return null;
                 while(reader.Read())
                     comments.Add(ParseModel(reader));
             }

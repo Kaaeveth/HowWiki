@@ -22,8 +22,12 @@ namespace HowWiki.Repository.Oracle
                 {":id", (id.ToString(), OracleDbType.Int32) }
             }))
             using (OracleDataReader reader = query.ExecuteReader())
+            {
+                if (!reader.HasRows)
+                    return null;
                 while (reader.Read())
                     return ParseModel(reader);
+            }
             return new ArticleModel();
         }
 
