@@ -7,14 +7,15 @@ namespace HowWiki.DB
 {
     public class OracleDbConnectionPool : IDbConnectionPool, IDisposable
     {
-        public int POOL_SIZE { get; } = 30; // Anzahl an Verbindungen
+        public int POOL_SIZE { get; }                       // Anzahl an Verbindungen
         private int takenConnectionsCount;
         private PoolConnection<OracleConnection>[] pool;
         private readonly object lockObject = new object();  //ThreadLock
         private readonly IConfiguration config;
 
-        public OracleDbConnectionPool(IConfiguration configuration)
+        public OracleDbConnectionPool(IConfiguration configuration, int poolSize)
         {
+            POOL_SIZE = poolSize;
             pool = new PoolConnection<OracleConnection>[POOL_SIZE];
             takenConnectionsCount = 0;
             config = configuration;
@@ -26,8 +27,14 @@ namespace HowWiki.DB
                 {
                     Connection = new OracleConnection(config.GetConnectionString("DbConnection"))
                 };
+                pool[i].Connection.KeepAlive = true;
                 pool[i].Connection.Open();
             }
+        }
+
+        public OracleDbConnectionPool(IConfiguration configuration)
+            :this(configuration, 30)
+        {
         }
 
         public void Dispose()
