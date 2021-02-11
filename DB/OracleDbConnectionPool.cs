@@ -10,7 +10,6 @@ namespace HowWiki.DB
         public int POOL_SIZE { get; }                       // Anzahl an Verbindungen
         private int takenConnectionsCount;
         private PoolConnection<OracleConnection>[] pool;
-        private readonly object lockObject = new object();  //ThreadLock
         private readonly IConfiguration config;
 
         public OracleDbConnectionPool(IConfiguration configuration, int poolSize)
@@ -55,7 +54,7 @@ namespace HowWiki.DB
 
         public void ReleaseConnection(IDbConnection connection)
         {
-            lock (lockObject)
+            lock (pool)
             {
                 //Ist die Verbindung im Pool?
                 foreach(PoolConnection<OracleConnection> con in pool)
@@ -76,7 +75,7 @@ namespace HowWiki.DB
 
         public IDbConnection RequestConnection()
         {
-            lock (lockObject)
+            lock (pool)
             {
                 //Eine freie Verbindung suchen
                 foreach(PoolConnection<OracleConnection> con in pool)
