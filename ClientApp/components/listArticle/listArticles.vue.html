@@ -1,8 +1,5 @@
 ﻿<template>
     <div class="holder" v-if="articles.length">
-        <select name="sort" id="formateMenu" class="orderSelecter">
-        </select>
-
         <article-holder v-for="article in articles" v-bind:article="article"></article-holder>
     </div>
     <p v-else>Loading...</p>
