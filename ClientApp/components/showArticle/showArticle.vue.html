@@ -22,12 +22,12 @@
                 </div>
             </div>
             <div class="holder holder-90">
-                <form accept-charset="utf-8">
+                <form accept-charset="utf-8" @submit.prevent="submitRating">
                     <!-- StarRating -->
                     <star-rating v-on:ratingchanged="setRating"></star-rating>
                     <label for="helpCheck">Ist der Artikel hilfreich?</label> 
                     <input id="helpCheck" type="checkbox" name="helpful" v-model="isHelpful">
-                    <input type="submit" @submit.prevent="submitRating" value="Bewerten">
+                    <input type="submit" value="Bewerten">
                 </form>
             </div>
             <div class="holder holder-90">
