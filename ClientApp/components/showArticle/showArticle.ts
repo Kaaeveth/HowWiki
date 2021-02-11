@@ -1,7 +1,7 @@
 ﻿import Vue from 'vue';
 import Component from 'vue-class-component';
-import Article from '../../Article';
-import Comment from '../../Comment';
+import Article from '../../Models/Article';
+import Comment from '../../Models/Comment';
 
 const ComponentOptions = Vue.extend({
     components: {

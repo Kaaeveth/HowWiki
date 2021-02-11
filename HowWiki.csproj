@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\Article.ts" />
+    <TypeScriptCompile Include="ClientApp\Models\Article.ts" />
     <TypeScriptCompile Include="ClientApp\components\articleHolder\articleHolder.ts" />
     <TypeScriptCompile Include="ClientApp\components\listArticle\listArticles.ts" />
     <TypeScriptCompile Include="ClientApp\components\createArticle\createArticle.ts" />
