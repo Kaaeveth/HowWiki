@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using HowWiki.Repository.Oracle;
 using HowWiki.Repository;
 using HowWiki.DB;
 
@@ -22,10 +23,14 @@ namespace HowWiki
         {
             services.AddMvc();
 
-            //Oracle spezifisch
+            //Connection Pool bauen
+            IDbConnectionPool dbConnectionPool = new OracleDbConnectionPool(Configuration, 10);
+
+            //Oracle spezifisch Dienste
             services.AddScoped<IArticleRepository, OracleArticleRepository>();
             services.AddScoped<ICommentRepository, OracleCommentRepository>();
-            services.AddSingleton<IDbConnectionPool, OracleDbConnectionPool>();
+            services.AddScoped<IRatingRepository, OracleRatingRepository>();
+            services.AddSingleton(dbConnectionPool);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
