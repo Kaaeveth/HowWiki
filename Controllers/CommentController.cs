@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HowWiki.Models;
 using HowWiki.Repository;
+
+/*
+ * CommentController.cs
+ * Controller fuer Kommentare eines Artikels
+ * Autor: Dominik Strutz
+ */
 
 namespace HowWiki.Controllers
 {

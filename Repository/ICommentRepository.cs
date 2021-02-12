@@ -1,6 +1,13 @@
 ﻿using System.Collections.Generic;
 using HowWiki.Models;
 
+/*
+ * ICommentRepository.cs
+ * Schnittstelle fuer ein CommentRepository
+ * 
+ * Autor: Dominik Strutz
+ */
+
 namespace HowWiki.Repository
 {
     public interface ICommentRepository

@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using Oracle.ManagedDataAccess.Client;
 
+/*
+ * OracleRatingRepository.cs
+ * Logik fuer die Manipulation von Bewertungen in der Datenbank - Oracle spezifisch.
+ * Autor: Dominik Strutz
+ */
+
 namespace HowWiki.Repository.Oracle
 {
     public class OracleRatingRepository : OracleRepository, IRatingRepository

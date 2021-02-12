@@ -1,6 +1,11 @@
 ﻿using HowWiki.Repository;
 using Microsoft.AspNetCore.Mvc;
 
+/*
+ * RatingController.cs
+ * Controller fuer die Bewertungen eines Artikels.
+ * Autor: Dominik Strutz
+ */
 
 namespace HowWiki.Controllers
 {

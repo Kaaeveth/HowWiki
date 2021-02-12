@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using HowWiki.Models;
 using HowWiki.Repository;
 using Microsoft.AspNetCore.Mvc;
 
+/*
+ * ArticleController.cs
+ * Controller fuer die Artikel
+ * 
+ * Author: Dominik Strutz
+*/
 
 namespace HowWiki.Controllers
 {

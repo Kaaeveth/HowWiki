@@ -1,11 +1,13 @@
 ﻿using HowWiki.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using HowWiki.DB;
-using System.Data;
 using Oracle.ManagedDataAccess.Client;
+
+/*
+ * OracleCommentRepository.cs
+ * Stellt Logik fuer die Manipulation von Kommentaren dar - Oracle spezifisch.
+ * Autor: Dominik Strutz
+ */
 
 namespace HowWiki.Repository.Oracle
 {

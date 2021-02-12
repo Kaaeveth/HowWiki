@@ -5,6 +5,12 @@ using System.Linq;
 using Oracle.ManagedDataAccess.Client;
 using HowWiki.DB;
 
+/*
+ * OracleArticleRepository.cs
+ * Stellt Logik fuer die Manipulation von Artikeln in einer Oracle Datenbank dar.
+ * Autor: Dominik Strutz
+ */
+
 namespace HowWiki.Repository.Oracle
 {
     public class OracleArticleRepository : OracleRepository, IArticleRepository
@@ -23,7 +29,7 @@ namespace HowWiki.Repository.Oracle
             }))
             using (OracleDataReader reader = query.ExecuteReader())
             {
-                if (!reader.HasRows)
+                if (!reader.HasRows) //Keine Artikel in der Datenbank
                     return null;
                 while (reader.Read())
                     return ParseModel(reader);

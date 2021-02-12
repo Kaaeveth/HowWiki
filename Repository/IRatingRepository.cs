@@ -1,4 +1,12 @@
-﻿namespace HowWiki.Repository
+﻿/*
+ * IRatingRepository.cs
+ * Schnittstelle fuer ein RatingRepository, welches Bewertungen aktualisiert / einfuegt
+ * Bewertungen selber werden nicht abgefragt, sondern aggregiert mit jedem Artikel.
+ * 
+ * Autor: Dominik Strutz
+ */
+
+namespace HowWiki.Repository
 {
     public interface IRatingRepository
     {

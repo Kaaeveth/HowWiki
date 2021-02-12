@@ -1,9 +1,14 @@
 ﻿using HowWiki.DB;
 using System;
-using System.Collections.Generic;
 using System.Data.Common;
-using System.Linq;
-using System.Threading.Tasks;
+
+/*
+ * Repository.cs
+ * Basisklasse aller Repositories
+ * Ein Repository stellt Logik fuer Datenbankabfragen bereit
+ * 
+ * Autor: Dominik Strutz
+ */
 
 namespace HowWiki.Repository
 {
@@ -12,7 +17,7 @@ namespace HowWiki.Repository
         protected IDbConnectionPool dbConnectionPool;
         protected DbConnection dbConnection;
 
-        public Repository( IDbConnectionPool connectionPool)
+        public Repository(IDbConnectionPool connectionPool)
         {
             dbConnectionPool = connectionPool;
         }

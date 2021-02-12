@@ -1,5 +1,10 @@
 ﻿using System.Data;
 
+/*
+ * IDbConnectionPool.cs
+ * Autor: Dominik Strutz
+ */
+
 namespace HowWiki.DB
 {
     public interface IDbConnectionPool

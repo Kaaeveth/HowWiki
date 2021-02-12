@@ -1,9 +1,11 @@
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+
+/*
+ * HomeController.cs
+ * Controller fuer das Frontend, fuer alle Routen, welche nicht mit /api/ starten
+ * Autor: Dominik Strutz
+ */
 
 namespace HowWiki.Controllers
 {
