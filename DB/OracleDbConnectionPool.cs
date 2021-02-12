@@ -3,6 +3,13 @@ using System;
 using System.Data;
 using Oracle.ManagedDataAccess.Client;
 
+/*
+ * OracleDbConnectionPool.cs
+ * ConnectionPool fuer eine Oracle Datenbank
+ * 
+ * Autor: Dominik Strutz
+ */
+
 namespace HowWiki.DB
 {
     public class OracleDbConnectionPool : IDbConnectionPool, IDisposable
@@ -12,7 +19,7 @@ namespace HowWiki.DB
         private PoolConnection<OracleConnection>[] pool;
         private readonly IConfiguration config;
 
-        public OracleDbConnectionPool(IConfiguration configuration, int poolSize)
+        public OracleDbConnectionPool(IConfiguration configuration, int poolSize = 30)
         {
             POOL_SIZE = poolSize;
             pool = new PoolConnection<OracleConnection>[POOL_SIZE];
@@ -29,11 +36,6 @@ namespace HowWiki.DB
                 pool[i].Connection.KeepAlive = true;
                 pool[i].Connection.Open();
             }
-        }
-
-        public OracleDbConnectionPool(IConfiguration configuration)
-            :this(configuration, 30)
-        {
         }
 
         public void Dispose()
@@ -59,10 +61,11 @@ namespace HowWiki.DB
                 //Ist die Verbindung im Pool?
                 foreach(PoolConnection<OracleConnection> con in pool)
                 {
-                    if(ReferenceEquals(con.Connection, con))
+                    if(ReferenceEquals(con.Connection, connection))
                     {
                         con.Taken = false;
                         takenConnectionsCount--;
+                        return;
                     }
                 }
             }
