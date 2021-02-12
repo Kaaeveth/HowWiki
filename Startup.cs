@@ -23,10 +23,10 @@ namespace HowWiki
         {
             services.AddMvc();
 
-            //Connection Pool bauen
+            //Connection Pool bauen mit 10 Verbindungen
             IDbConnectionPool dbConnectionPool = new OracleDbConnectionPool(Configuration, 10);
 
-            //Oracle spezifisch Dienste
+            //Repositories werden ueber DependencyInjection den Controllern uebergeben
             services.AddScoped<IArticleRepository, OracleArticleRepository>();
             services.AddScoped<ICommentRepository, OracleCommentRepository>();
             services.AddScoped<IRatingRepository, OracleRatingRepository>();
