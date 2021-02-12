@@ -1,6 +1,86 @@
 <template>
-    <div style="padding: 2em 3em;">
-        <h1>HowWiki DemoApp</h1>
-        todo: Einige projektspezifische Infos
+    <div>
+        <div style="padding: 2em 3em;">
+            <h1>HowWiki DemoApp</h1>
+            <div>
+                Single Page Application mit <a href="https://vuejs.org/v2/guide/index.html">Vue.js</a> (TypeScript)
+                und <a href="https://docs.microsoft.com/de-de/aspnet/core/mvc/overview?view=aspnetcore-5.0">ASP.NET Core</a> (C#)
+                <br />
+                Abgeaenderte Version einer WebApp von einer anderen Veranstaltung.
+                <br />
+                Die App bietet keine Login-Moeglichkeiten. Alle Interaktionen laufen deshalb ueber einen Benutzer im Backend.
+                <br />
+                Die Datenbank ist ebenfalls nur im Netzwerk der Hochschule erreichbar.
+                <br /><br />
+                API Endpunkte, welche die App verwendet:
+                <br /><br />
+                <table>
+                    <tr>
+                        <th>
+                            HTTP Verb
+                        </th>
+                        <th>
+                            Endpunkt
+                        </th>
+                        <th>
+                            Body
+                        </th>
+                    </tr>
+                    <tr>
+                        <td><code>GET</code></td>
+                        <td>/api/article/list</td>
+                    </tr>
+                    <tr>
+                        <td><code>POST</code></td>
+                        <td>/api/article/create</td>
+                        <td>FormData: <code>title</code>, <code>content</code>, <code>references</code>, <code>tags</code>(CSV)</td>
+                    </tr>
+                    <tr>
+                        <td><code>GET</code></td>
+                        <td>/api/article/show/<code>{id}</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>PUT</code></td>
+                        <td>/api/article/rate/<code>{id}</code>/<code>{stars}</code>/<code>{helpful}</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>GET</code></td>
+                        <td>/api/comment/<code>{id}</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>POST</code></td>
+                        <td>/api/comment/<code>{id}</code>/<code>{comment}</code></td>
+                    </tr>
+                </table>
+            </div>
+            <h2 style="text-decoration: underline">Vue Demo</h2>
+            <!-- VueDemo1 -->
+            <div >
+                <div style="margin-bottom: 1.5em;">
+                    <div id="app">
+                        Message: {{ message }}
+                    </div>
+                    <input v-model="message" />
+                </div>
+                <div style="display: flex; flex-direction: row;">
+                    <code class="code-demo">
+            &ltdiv id="app">                
+               Message: &lcub;{ message } &rcub;    
+            &lt/div>                        
+            &ltinput v-model="message" />   
+                    </code>
+                    <code class="code-demo" style="margin-left: 1em;">
+        var app = new Vue({     
+          el: '#app',           
+          data: {               
+            message: 'Hallo'    
+          }                     
+        })                      
+                    </code>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
+
+<script src="./demo.ts"></script>
