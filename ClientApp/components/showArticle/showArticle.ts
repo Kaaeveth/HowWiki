@@ -25,8 +25,7 @@ export default class ShowArticleComponent extends ComponentOptions {
 
         let textId: string | null = this.$route.params.textId;
         if (textId === null) {
-            //todo: error routing
-            location.pathname = '/error';
+            this.$router.push('/error');
             return;
         }
         this.textId = textId;
@@ -34,7 +33,11 @@ export default class ShowArticleComponent extends ComponentOptions {
         //Artikel fetchen
         fetch('/api/article/show/' + textId)
             .then(res => res.json() as Promise<Article>)
-            .then(data => this.article = data);
+            .then(data => this.article = data)
+            .catch(err => {
+                if(err)
+                    this.$router.push('/error');
+            });
 
         //Kommentare fetchen
         fetch('/api/comment/' + this.$route.params.textId)
