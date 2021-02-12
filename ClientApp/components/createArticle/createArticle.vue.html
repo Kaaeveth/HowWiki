@@ -5,7 +5,7 @@
             <label for="articleTitle" class="labelTitle rainbow">Titel: </label>
             <input type="text" id="articleTitle" v-model="article.title" name="title" class="c_article c_articleTitle">
 
-            <label for="tagContainer" class="labelTitle rainbow">Tags (min. 3): </label>
+            <label for="tagContainer" class="labelTitle rainbow">Tags: </label>
             <div class="container-base">
                 <input type="text" style="color: black;" id="addTagField" v-model="tagInput">
                 <button class="btn btn-tag" id="addTagBtn" @click.prevent="addTag">+</button>
