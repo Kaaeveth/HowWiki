@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using HowWiki.Models;
-using HowWiki.Repository;
+using HowWiki.Context;
 using Microsoft.AspNetCore.Mvc;
 
 /*
@@ -15,25 +15,25 @@ namespace HowWiki.Controllers
     [Route("api/[controller]")]
     public class ArticleController : ControllerBase
     {
-        IArticleRepository articleRepository;
+        IArticleContext articleContext;
 
-        public ArticleController(IArticleRepository articleRepository)
+        public ArticleController(IArticleContext articleRepository)
         {
-            this.articleRepository = articleRepository;
+            this.articleContext = articleRepository;
         }
 
         // GET: api/<ArticleController>/list
         [HttpGet("list")]
         public IEnumerable<ArticleModel> Get()
         {
-            return articleRepository.GetArticles();
+            return articleContext.GetArticles();
         }
 
         // GET api/<ArticleController>/show/{textId}
         [HttpGet("show/{textId}")]
         public ArticleModel Get(int textID)
         {
-            ArticleModel article = articleRepository.GetArticleById(textID);
+            ArticleModel article = articleContext.GetArticleById(textID);
             if (article == null)
             {
                 Response.StatusCode = 404;
@@ -46,7 +46,7 @@ namespace HowWiki.Controllers
         [HttpPost("create")]
         public void Post()
         {
-            articleRepository.InsertArticle(new ArticleModel()
+            articleContext.InsertArticle(new ArticleModel()
             {
                 Title = Request.Form["title"],
                 Content = Request.Form["content"],

@@ -4,17 +4,17 @@ using HowWiki.DB;
 using Oracle.ManagedDataAccess.Client;
 
 /*
- * OracleCommentRepository.cs
+ * OracleCommentContext.cs
  * Stellt Logik fuer die Manipulation von Kommentaren dar - Oracle spezifisch.
  * Autor: Dominik Strutz
  */
 
-namespace HowWiki.Repository.Oracle
+namespace HowWiki.Context.Oracle
 {
-    public class OracleCommentRepository : OracleRepository, ICommentRepository
+    public class OracleCommentContext : OracleContext, ICommentContext
     {
 
-        public OracleCommentRepository(IDbConnectionPool connectionPool)
+        public OracleCommentContext(IDbConnectionPool connectionPool)
             :base(connectionPool)
         {
         }

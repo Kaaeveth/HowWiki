@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using Oracle.ManagedDataAccess.Client;
 
 /*
- * OracleRatingRepository.cs
+ * OracleRatingContext.cs
  * Logik fuer die Manipulation von Bewertungen in der Datenbank - Oracle spezifisch.
+ * 
  * Autor: Dominik Strutz
  */
 
-namespace HowWiki.Repository.Oracle
+namespace HowWiki.Context.Oracle
 {
-    public class OracleRatingRepository : OracleRepository, IRatingRepository
+    public class OracleRatingContext : OracleContext, IRatingContext
     {
-        public OracleRatingRepository(IDbConnectionPool connectionPool)
+        public OracleRatingContext(IDbConnectionPool connectionPool)
             :base(connectionPool)
         {
         }

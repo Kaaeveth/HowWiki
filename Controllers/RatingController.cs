@@ -1,4 +1,4 @@
-﻿using HowWiki.Repository;
+﻿using HowWiki.Context;
 using Microsoft.AspNetCore.Mvc;
 
 /*
@@ -12,18 +12,18 @@ namespace HowWiki.Controllers
     [Route("api/[controller]")]
     public class RatingController : ControllerBase
     {
-        IRatingRepository ratingRepository;
+        IRatingContext ratingContext;
 
-        public RatingController(IRatingRepository ratingRepository)
+        public RatingController(IRatingContext ratingRepository)
         {
-            this.ratingRepository = ratingRepository;
+            this.ratingContext = ratingRepository;
         }
 
         //PUT api/<ArticleController>/rate/{textId}/{stars}/{helpful}
         [HttpPut("rate/{textId}/{stars}/{helpful}")]
         public void Put(int textId, int stars, bool helpful)
         {
-            ratingRepository.InsertRating(textId, stars, helpful);
+            ratingContext.InsertRating(textId, stars, helpful);
         }
     }
 }

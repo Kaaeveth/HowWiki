@@ -2,15 +2,15 @@
 using HowWiki.Models;
 
 /*
- * ICommentRepository.cs
- * Schnittstelle fuer ein CommentRepository
+ * ICommentContext.cs
+ * Schnittstelle fuer ein CommentContext
  * 
  * Autor: Dominik Strutz
  */
 
-namespace HowWiki.Repository
+namespace HowWiki.Context
 {
-    public interface ICommentRepository
+    public interface ICommentContext
     {
         IEnumerable<CommentModel> GetCommentsByTextId(int textId);
         void CreateCommentForTextId(int textId, string comment, int userid);

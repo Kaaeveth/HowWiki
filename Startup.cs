@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using HowWiki.Repository.Oracle;
-using HowWiki.Repository;
+using HowWiki.Context.Oracle;
+using HowWiki.Context;
 using HowWiki.DB;
 
 namespace HowWiki
@@ -27,9 +27,9 @@ namespace HowWiki
             IDbConnectionPool dbConnectionPool = new OracleDbConnectionPool(Configuration, 10);
 
             //Repositories werden ueber DependencyInjection den Controllern uebergeben
-            services.AddScoped<IArticleRepository, OracleArticleRepository>();
-            services.AddScoped<ICommentRepository, OracleCommentRepository>();
-            services.AddScoped<IRatingRepository, OracleRatingRepository>();
+            services.AddScoped<IArticleContext, OracleArticleContext>();
+            services.AddScoped<ICommentContext, OracleCommentContext>();
+            services.AddScoped<IRatingContext, OracleRatingContext>();
             services.AddSingleton(dbConnectionPool);
         }
 

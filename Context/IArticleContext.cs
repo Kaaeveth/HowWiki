@@ -2,15 +2,15 @@
 using HowWiki.Models;
 
 /*
- * IArticleRepository.cs
- * Schnittstelle fuer ein ArticleRepository
+ * IArticleContext.cs
+ * Schnittstelle fuer ein ArticleContext
  * 
  * Autor: Dominik Strutz
  */
 
-namespace HowWiki.Repository
+namespace HowWiki.Context
 {
-    public interface IArticleRepository
+    public interface IArticleContext
     {
         ArticleModel GetArticleById(int id);
         IEnumerable<ArticleModel> GetArticles();

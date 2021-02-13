@@ -1,22 +1,22 @@
 ﻿using HowWiki.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Oracle.ManagedDataAccess.Client;
 using HowWiki.DB;
 
 /*
- * OracleArticleRepository.cs
+ * OracleArticleContext.cs
  * Stellt Logik fuer die Manipulation von Artikeln in einer Oracle Datenbank dar.
+ * 
  * Autor: Dominik Strutz
  */
 
-namespace HowWiki.Repository.Oracle
+namespace HowWiki.Context.Oracle
 {
-    public class OracleArticleRepository : OracleRepository, IArticleRepository
+    public class OracleArticleContext : OracleContext, IArticleContext
     {
 
-        public OracleArticleRepository(IDbConnectionPool connectionPool)
+        public OracleArticleContext(IDbConnectionPool connectionPool)
             :base(connectionPool)
         {
         }

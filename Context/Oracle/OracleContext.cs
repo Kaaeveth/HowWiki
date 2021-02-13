@@ -5,18 +5,18 @@ using HowWiki.DB;
 using Oracle.ManagedDataAccess.Client;
 
 /*
- * OracleRepository.cs
- * Basisklasse aller Oracle Repositories.
+ * OracleContext.cs
+ * Basisklasse aller Oracle Contexts.
  * Nur mit einem OracleConnectionPool verwenden.
  * 
  * Autor: Dominik Strutz
  */
 
-namespace HowWiki.Repository.Oracle
+namespace HowWiki.Context.Oracle
 {
-    public abstract class OracleRepository : Repository
+    public abstract class OracleContext : Context
     {
-        public OracleRepository(IDbConnectionPool connectionPool)
+        public OracleContext(IDbConnectionPool connectionPool)
             :base(connectionPool)
         {
             if (connectionPool is OracleDbConnectionPool)

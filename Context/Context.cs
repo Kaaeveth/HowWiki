@@ -3,21 +3,21 @@ using System;
 using System.Data.Common;
 
 /*
- * Repository.cs
- * Basisklasse aller Repositories
- * Ein Repository stellt Logik fuer Datenbankabfragen bereit
+ * Context.cs
+ * Basisklasse aller Contexts
+ * Ein Context stellt Logik fuer Datenbankabfragen bereit
  * 
  * Autor: Dominik Strutz
  */
 
-namespace HowWiki.Repository
+namespace HowWiki.Context
 {
-    public abstract class Repository : IDisposable
+    public abstract class Context : IDisposable
     {
         protected IDbConnectionPool dbConnectionPool;
         protected DbConnection dbConnection;
 
-        public Repository(IDbConnectionPool connectionPool)
+        public Context(IDbConnectionPool connectionPool)
         {
             dbConnectionPool = connectionPool;
         }
